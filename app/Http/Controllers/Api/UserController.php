@@ -11,7 +11,6 @@ use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public $successStatus = 200;
     public function login(Request $request){ 
         $validator = Validator::make($request->all(), [
             'email' => 'required|string|email',
@@ -53,6 +52,35 @@ class UserController extends Controller
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
+        ]);
+    }
+
+    public function signup(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|confirmed'
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'fails',
+                'message' => $validator->errors()->first(),
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+ 
+        $user = new User([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+ 
+        $user->save();
+ 
+        return response()->json([
+            'status' => 'success',
         ]);
     }
     /**
