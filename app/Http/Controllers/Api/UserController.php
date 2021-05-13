@@ -10,10 +10,34 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
     public function login(Request $request) {
-        $user = User::where(['email' => $request->get('email')])->first();
-        //dd($request->get('password'));
 
-        return response()->json(['status' => 1, 'data' => $user]);
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+ 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -1,
+                'message' => $validator->errors()->first(),
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+
+        $user = User::where(['email' => $request->get('email'), 'password' => $request->get('password')])->first();
+        if($user == null) {
+            return response()->json([
+                'status' => -2, 
+                'data' => $user,
+                'message' => 'Login Fail'
+            ]);
+        }
+
+        return response()->json([
+            'status' => 1, 
+            'data' => $user,
+            'message' => 'Login Successful'
+        ]);
     }
     /**
      * Display a listing of the resource.
