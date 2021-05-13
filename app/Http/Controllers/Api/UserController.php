@@ -28,32 +28,20 @@ class UserController extends Controller
  
         $credentials = request(['email', 'password']);
  
-        // if (!Auth::attempt($credentials)) {
-        //     return response()->json([
-        //         'status' => 'fails',
-        //         'message' => 'Unauthorized'
-        //     ], 401);
-        // }
         if (!Auth::attempt($credentials)) {
-            // $user = $request->user();
-            // $tokenResult = $user->createToken('Personal Access Token');
-            // $token = $tokenResult->token;
-    
-            // if ($request->remember_me) {
-            //     $token->expires_at = Carbon::now()->addWeeks(1);
-            // }
-    
-            // $token->save();
-    
             return response()->json([
-                'status' => 'success',
-                // 'access_token' => $tokenResult->accessToken,
-                'token_type' => 'Bearer',
-                // 'expires_at' => Carbon::parse(
-                //     $tokenResult->token->expires_at
-                // )->toDateTimeString()
-            ]);
+                'status' => 'fails',
+                'message' => 'Unauthorized'
+            ], 401);
         }
+        return response()->json([
+            'status' => 'success',
+            // 'access_token' => $tokenResult->accessToken,
+            'token_type' => 'Bearer',
+            // 'expires_at' => Carbon::parse(
+            //     $tokenResult->token->expires_at
+            // )->toDateTimeString()
+        ]);
     }
     /**
      * Display a listing of the resource.
