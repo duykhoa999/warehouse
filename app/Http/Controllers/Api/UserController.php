@@ -35,15 +35,15 @@ class UserController extends Controller
         //     ], 401);
         // }
         if (!Auth::attempt($credentials)) {
-            $user = $request->user();
-            $tokenResult = $user->createToken('Personal Access Token');
-            $token = $tokenResult->token;
+            // $user = $request->user();
+            // $tokenResult = $user->createToken('Personal Access Token');
+            // $token = $tokenResult->token;
     
-            if ($request->remember_me) {
-                $token->expires_at = Carbon::now()->addWeeks(1);
-            }
+            // if ($request->remember_me) {
+            //     $token->expires_at = Carbon::now()->addWeeks(1);
+            // }
     
-            $token->save();
+            // $token->save();
     
             return response()->json([
                 'status' => 'success',
