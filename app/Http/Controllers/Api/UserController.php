@@ -52,7 +52,7 @@ class UserController extends Controller
             'expires_at' => Carbon::parse(
                 $tokenResult->token->expires_at
             )->toDateTimeString()
-        ], 201);
+        ]);
     }
     /**
      * Display a listing of the resource.
