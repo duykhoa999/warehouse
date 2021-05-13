@@ -27,7 +27,7 @@ class UserController extends Controller
         }
  
         $credentials = request(['email', 'password']);
-        dd($credentials = request(['email', 'password']));
+        dd(Auth::attempt($credentials));
  
         if (!Auth::attempt($credentials)) {
             return response()->json([
