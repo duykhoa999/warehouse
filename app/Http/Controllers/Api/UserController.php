@@ -54,62 +54,7 @@ class UserController extends Controller
             )->toDateTimeString()
         ]);
     }
-
-    public function signup(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|confirmed'
-        ]);
- 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'fails',
-                'message' => $validator->errors()->first(),
-                'errors' => $validator->errors()->toArray(),
-            ]);
-        }
- 
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
- 
-        $user->save();
- 
-        return response()->json([
-            'status' => 'success',
-        ]);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $status = 1;
-        $data = User::all();
-        if ($data->isEmpty()) {
-            $status = -1;
-            $message = "No Data";
-        }
-        else {
-            $message = "Successful!";
-            return response()->json([
-                'status' => $status,
-                'message' => $message,
-                'data' => $data,
-            ]);
-        }
-        return response()->json([
-            'status' => $status,
-            'message' => $message,
-        ]);
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
