@@ -47,7 +47,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|string|email',
-            'phone' => 'required|regex:/(01)[0-9]{9}/',
+            'phone' => 'required',
             'accountNumber' => 'required'
         ]);
 
