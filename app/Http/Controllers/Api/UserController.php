@@ -26,9 +26,9 @@ class UserController extends Controller
             ]);
         }
  
-        $credentials = request(['email', 'password']);
+        // $credentials = request(['email', 'password']);
  
-        if (!Auth::attempt($credentials)) {
+        if (!$request->authenticate()) {
             return response()->json([
                 'status' => 'fails',
                 'message' => 'Unauthorized'
