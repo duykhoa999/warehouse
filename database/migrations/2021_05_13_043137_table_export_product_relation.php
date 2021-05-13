@@ -33,7 +33,7 @@ class TableExportProductRelation extends Migration
      */
     public function down()
     {
-        Schema::table('import_product', function (Blueprint $table) {
+        Schema::table('export_product', function (Blueprint $table) {
             $table->dropForeign(['product_id']);
             $table->dropForeign(['export_id']);
         });
