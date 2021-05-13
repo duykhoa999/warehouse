@@ -28,7 +28,6 @@ class UserController extends Controller
         if($user == null) {
             return response()->json([
                 'status' => -2, 
-                'data' => $user,
                 'message' => 'Login Fail'
             ]);
         }
@@ -74,9 +73,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|string|email',
+            'password' => 'required|string|comfirmed',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -1,
+                'message' => $validator->errors()->first(),
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
         $user = User::create($request->all());
         
-        return response()->json($user);
+        return response()->json([
+            'status' => 1,
+            'data' => $user,
+            'message' => "Create User Successful!",
+        ]);
     }
 
     /**
