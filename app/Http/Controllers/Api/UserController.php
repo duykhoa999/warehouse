@@ -49,9 +49,9 @@ class UserController extends Controller
                 'status' => 'success',
                 // 'access_token' => $tokenResult->accessToken,
                 'token_type' => 'Bearer',
-                'expires_at' => Carbon::parse(
-                    $tokenResult->token->expires_at
-                )->toDateTimeString()
+                // 'expires_at' => Carbon::parse(
+                //     $tokenResult->token->expires_at
+                // )->toDateTimeString()
             ]);
         }
     }
