@@ -4,45 +4,16 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public function login(Request $request){ 
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
-        ]);
- 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 'fails',
-                'message' => $validator->errors()->first(),
-                'errors' => $validator->errors()->toArray(),
-            ]);
-        }
- 
-        $credentials = request(['email', 'password']);
-        dd(Auth::attempt($credentials));
- 
-        if (!Auth::attempt($credentials)) {
-            return response()->json([
-                'status' => 'fails',
-                'message' => 'Unauthorized'
-            ], 401);
-        }
-        return response()->json([
-            'status' => 'success',
-            // 'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            // 'expires_at' => Carbon::parse(
-            //     $tokenResult->token->expires_at
-            // )->toDateTimeString()
-        ]);
+    public function login(Request $request) {
+        $user = User::where(['email' => $request->get('email')])->first();
+        //dd($request->get('password'));
+
+        return response()->json(['status' => 1, 'data' => $user]);
     }
     /**
      * Display a listing of the resource.
