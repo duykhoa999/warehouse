@@ -47,7 +47,7 @@ class UserController extends Controller
     
             return response()->json([
                 'status' => 'success',
-                'access_token' => $tokenResult->accessToken,
+                // 'access_token' => $tokenResult->accessToken,
                 'token_type' => 'Bearer',
                 'expires_at' => Carbon::parse(
                     $tokenResult->token->expires_at
