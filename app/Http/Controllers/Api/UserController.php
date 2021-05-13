@@ -72,18 +72,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'email' => 'required|string|email',
-        //     'password' => 'required|string|comfirmed',
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json([
-        //         'status' => -1,
-        //         'errors' => $validator->errors()->toArray(),
-        //     ]);
-        // }
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -1,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
         $user = User::create($request->all());
         
         return response()->json([
