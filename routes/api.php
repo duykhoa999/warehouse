@@ -18,6 +18,10 @@ use App\Http\Controllers\Api\SupplierController;
 |
 */
 
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 //Authentication
 
     Route::post('/login', [UserController::class, 'login']);
