@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
@@ -16,9 +16,24 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        echo "Hello World!";
-        // $customers = Customer::all();
-        // return response()->json($customers, Response::HTTP_OK);
+        $status = 1;
+        $data = Customer::all();
+        if ($data->isEmpty()) {
+            $status = -1;
+            $message = "No Data";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $data,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -29,9 +44,26 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = Customer::create($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|string|email',
+            'phone' => 'required|regex:/(01)[0-9]{9}/',
+            'accountNumber' => 'required'
+        ]);
 
-        return response()->json($customer);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -1,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+        $customer = Customer::create($request->all());
+        
+        return response()->json([
+            'status' => 1,
+            'data' => $customer,
+            'message' => "Create User Successful!",
+        ]);
     }
 
     /**
@@ -42,8 +74,24 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
+        $status = 1;
         $customer = Customer::find($id);
-        return $customer;
+        if ($customer == null) {
+            $status = -1;
+            $message = "Cannot find this customer!";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $customer,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -55,8 +103,20 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $status = 1;
         $customer = Customer::find($id);
-        return $customer->update($request->all());
+        if ($customer == null) {
+            $status = -1;
+            $message = "Cannot find this customer!";
+        }
+        else {
+            $customer->update($request->all());
+            $message = "Update Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -67,8 +127,19 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
+        $status = 1;
         $customer = Customer::find($id);
-        $customer->delete();
-        return response()->json($customer);
+        if ($customer == null) {
+            $status = -1;
+            $message = "Cannot find this user!";
+        }
+        else {
+            $customer->delete();
+            $message = "Delete Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 }
