@@ -12,9 +12,9 @@ class UserController extends Controller
     public $successStatus = 200;
     public function login(){ 
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){ 
-            $user = $this->auth->user(); 
-            $success['token'] =  $user->createToken('auth')-> accessToken; 
-            return response()->json(['success' => $success], $this-> successStatus); 
+            // $user = $this->auth->user(); 
+            // $success['token'] =  $user->createToken('auth')-> accessToken; 
+            return response()->json($this-> successStatus); 
         } 
         else{ 
             return response()->json(['error'=>'Unauthorised'], 401); 
