@@ -48,7 +48,6 @@ class ProductController extends Controller
             'name' => 'required',
             'unit' => 'required|string',
             'amount' => 'required|numeric|min:0',
-            'photo' => 'image|max:2048',
         ]);
 
         if ($validator->fails()) {
