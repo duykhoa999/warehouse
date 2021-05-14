@@ -15,7 +15,24 @@ class ExportProductController extends Controller
      */
     public function index()
     {
-        //
+        $status = 1;
+        $data = ExportProduct::all();
+        if ($data->isEmpty()) {
+            $status = -1;
+            $message = "No Data";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $data,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
