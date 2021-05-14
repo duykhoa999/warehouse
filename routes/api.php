@@ -56,6 +56,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('supplier.delete');
 
 //Export
+    Route::get('/exports', [ExportController::class, 'index'])->name('export.index');
     Route::post('/exports', [ExportController::class, 'store'])->name('export.store');   
 
 // Route::group(['prefix' => 'api', 'as' => 'api.'], function() {

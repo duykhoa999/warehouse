@@ -15,7 +15,13 @@ class ExportController extends Controller
      */
     public function index()
     {
-        
+        $data = Export::all();
+        $message = "Successful!";
+            return response()->json([
+                'status' => 1,
+                'message' => $message,
+                'data' => $data,
+            ]);
     }
 
     /**
