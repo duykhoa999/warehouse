@@ -43,7 +43,6 @@ class ExportProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd("abc");
         $exportProduct = Edetail::create($request->all());
 
         return response()->json([
