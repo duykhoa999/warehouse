@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Export;
+use App\Models\Import;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,7 +17,7 @@ class ExportController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Export::all();
+        $data = Import::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";
@@ -46,7 +46,7 @@ class ExportController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'date' => 'required',
-            'customer_id' => 'required',
+            'supplier_id' => 'required',
             'user_id' => 'required',
         ]);
 
@@ -56,12 +56,12 @@ class ExportController extends Controller
                 'errors' => $validator->errors()->toArray(),
             ]);
         }
-        $export = Export::create($request->all());
+        $import = Import::create($request->all());
 
         return response()->json([
             'status' => 1,
-            'data' => $export,
-            'message' => "Create Export Successful!",
+            'data' => $import,
+            'message' => "Create Import Successful!",
         ]);
     }
 
@@ -74,17 +74,17 @@ class ExportController extends Controller
     public function show($id)
     {
         $status = 1;
-        $export = Export::find($id);
-        if ($export == null) {
+        $import = Import::find($id);
+        if ($import == null) {
             $status = -1;
-            $message = "Cannot find this export!";
+            $message = "Cannot find this import!";
         }
         else {
             $message = "Successful!";
             return response()->json([
                 'status' => $status,
                 'message' => $message,
-                'data' => $export,
+                'data' => $import,
             ]);
         }
         return response()->json([
@@ -100,7 +100,7 @@ class ExportController extends Controller
      * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Export $export)
+    public function update(Request $request,$id)
     {
         //
     }
@@ -114,13 +114,13 @@ class ExportController extends Controller
     public function destroy($id)
     {
         $status = 1;
-        $export = Export::find($id);
-        if ($export == null) {
+        $import = Import::find($id);
+        if ($import == null) {
             $status = -1;
-            $message = "Cannot find this export!";
+            $message = "Cannot find this import!";
         }
         else {
-            $export->delete();
+            $import->delete();
             $message = "Delete Successful!";
         }
         return response()->json([
