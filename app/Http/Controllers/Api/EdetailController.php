@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\ExportProduct;
+use App\Models\Edetail;
 use Illuminate\Http\Request;
 
 class ExportProductController extends Controller
@@ -16,7 +16,7 @@ class ExportProductController extends Controller
     public function index()
     {
         $status = 1;
-        $data = ExportProduct::all();
+        $data = Edetail::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";
@@ -44,7 +44,7 @@ class ExportProductController extends Controller
     public function store(Request $request)
     {
         dd("abc");
-        $exportProduct = ExportProduct::create($request->all());
+        $exportProduct = Edetail::create($request->all());
 
         return response()->json([
             'status' => 1,
@@ -59,7 +59,7 @@ class ExportProductController extends Controller
      * @param  \App\Models\ExportProduct  $exportProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(ExportProduct $exportProduct)
+    public function show($id)
     {
         //
     }
@@ -71,7 +71,7 @@ class ExportProductController extends Controller
      * @param  \App\Models\ExportProduct  $exportProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ExportProduct $exportProduct)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -82,7 +82,7 @@ class ExportProductController extends Controller
      * @param  \App\Models\ExportProduct  $exportProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExportProduct $exportProduct)
+    public function destroy($id)
     {
         //
     }
