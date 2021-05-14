@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Import;
 
 class Supplier extends Model
 {
@@ -18,6 +19,6 @@ class Supplier extends Model
     ];
 
     public function imports() {
-        return $this->hasMany('App\Import', 'supplier_id', 'id');
+        return $this->hasMany(Import::class, 'supplier_id', 'id');
     }
 }

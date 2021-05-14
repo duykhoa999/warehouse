@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Export;
 
 class Customer extends Model
 {
@@ -20,6 +21,6 @@ class Customer extends Model
     ];
 
     public function exports() {
-        return $this->hasMany('App\Export', 'export_id', 'id');
+        return $this->hasMany(Export::class, 'export_id', 'id');
     }
 }

@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Supplier;
+use App\Models\Product;
 
 class Import extends Model
 {
@@ -24,10 +26,10 @@ class Import extends Model
     }
 
     public function suppliers() {
-        return $this->belongsTo('App\Supplier', 'supplier_id' , 'id');
+        return $this->belongsTo(Supplier::class, 'supplier_id' , 'id');
     }
 
     public function products() {
-        return $this->belongsToMany('App\Product', 'import_product', 'import_id', 'product_id');
+        return $this->belongsToMany(Product::class, 'import_product', 'import_id', 'product_id');
     }
 }

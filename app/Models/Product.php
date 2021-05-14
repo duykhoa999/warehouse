@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Import;
+use App\Models\Export;
 
 class Product extends Model
 {
@@ -19,10 +21,10 @@ class Product extends Model
     ];
 
     public function imports() {
-        return $this->belongsToMany('App\Import', 'import_product', 'product_id', 'import_id');
+        return $this->belongsToMany(Import::class, 'import_product', 'product_id', 'import_id');
     }
 
     public function exports() {
-        return $this->belongsToMany('App\Export', 'export_product', 'product_id', 'export_id');
+        return $this->belongsToMany(Export::class, 'export_product', 'product_id', 'export_id');
     }
 }
