@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use App\Models\Export;
+use App\Models\Import;
 
 class User extends Authenticatable
 {
@@ -43,10 +45,10 @@ class User extends Authenticatable
     ];
 
     public function imports() {
-        return $this->hasMany('App\Import', 'user_id', 'id');
+        return $this->hasMany(Import::class, 'user_id', 'id');
     }
 
     public function exports() {
-        return $this->hasMany('App\Export', 'user_id', 'id');
+        return $this->hasMany(Export::class, 'user_id', 'id');
     }
 }
