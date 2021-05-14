@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableExportProductRelation extends Migration
+class CreateImportProductTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,18 @@ class TableExportProductRelation extends Migration
      */
     public function up()
     {
-        Schema::table('export_product', function (Blueprint $table) {
+        Schema::create('import_product', function (Blueprint $table) {
+            $table->unsignedBigInteger('product_id')->unsigned();
+            $table->unsignedBigInteger('import_id')->unsigned();
+            $table->integer('amount');
+
             $table->foreign('product_id')->references('id')
                 ->on('products')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('export_id')->references('id')
-                ->on('exports')
+            $table->foreign('import_id')->references('id')
+                ->on('imports')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
@@ -33,9 +37,6 @@ class TableExportProductRelation extends Migration
      */
     public function down()
     {
-        Schema::table('export_product', function (Blueprint $table) {
-            $table->dropForeign(['product_id']);
-            $table->dropForeign(['export_id']);
-        });
+        Schema::dropIfExists('import_product');
     }
 }

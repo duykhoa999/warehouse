@@ -28,8 +28,4 @@ class Import extends Model
     public function suppliers() {
         return $this->belongsTo(Supplier::class, 'supplier_id' , 'id');
     }
-
-    public function products() {
-        return $this->belongsToMany(Product::class, 'import_product', 'import_id', 'product_id');
-    }
 }

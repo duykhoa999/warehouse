@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ExportController;
+use App\Http\Controllers\Api\ExportProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +59,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Export
     Route::get('/exports', [ExportController::class, 'index'])->name('export.index');
     Route::post('/exports', [ExportController::class, 'store'])->name('export.store');   
+
+//ExportProduct
+    Route::get('/export-product', [ExportProductController::class, 'index'])->name('export-product.index');
+    Route::post('/export-product', [ExportProductController::class, 'store'])->name('export-product.store');   
 
 // Route::group(['prefix' => 'api', 'as' => 'api.'], function() {
 //     //      

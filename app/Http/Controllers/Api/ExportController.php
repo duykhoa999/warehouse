@@ -45,10 +45,7 @@ class ExportController extends Controller
     public function store(Request $request)
     {
         $export = Export::create($request->all());
-        $export->products()->attach($request->input('product_id'), [
-            'amount' => $request->input('amount'),
-        ]);
-        
+
         return response()->json([
             'status' => 1,
             'data' => $export,
