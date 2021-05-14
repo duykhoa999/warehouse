@@ -13,7 +13,6 @@ class CreateImportProduct extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
 
         Schema::create('import_product', function (Blueprint $table) {
             $table->unsignedBigInteger('product_id')->unsigned();
