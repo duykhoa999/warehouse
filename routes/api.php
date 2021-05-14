@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ExportController;
-use App\Http\Controllers\Api\ExportProductController;
+use App\Http\Controllers\Api\EdetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,8 +61,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/exports', [ExportController::class, 'store'])->name('export.store');   
 
 //ExportProduct
-    Route::get('/export-product', [ExportProductController::class, 'index'])->name('export-product.index');
-    Route::post('/export-product', [ExportProductController::class, 'store'])->name('export-product.store');   
+    Route::get('/edetails', [EdetailController::class, 'index'])->name('edetail.index');
+    Route::post('/edetails', [EdetailController::class, 'store'])->name('edetail.store');   
 
 // Route::group(['prefix' => 'api', 'as' => 'api.'], function() {
 //     //      
