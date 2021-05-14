@@ -48,7 +48,7 @@ class ExportController extends Controller
         $export->products()->attach($request->input('product_id'), [
             'amount' => $request->input('amount'),
         ]);
-        dd($export);
+        
         return response()->json([
             'status' => 1,
             'data' => $export,
