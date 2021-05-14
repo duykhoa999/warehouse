@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SupplierController;
+use App\Http\Controllers\Api\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('supplier.update');
     Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('supplier.delete');
 
+//Export
+    Route::post('/exports', [ExportController::class, 'store'])->name('export.store');   
 
 // Route::group(['prefix' => 'api', 'as' => 'api.'], function() {
 //     //      
