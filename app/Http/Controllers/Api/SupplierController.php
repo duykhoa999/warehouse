@@ -5,19 +5,35 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
 
 class SupplierController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $suppliers = Supplier::all();
-        return response()->json($suppliers, Response::HTTP_OK);
+        $status = 1;
+        $data = Supplier::all();
+        if ($data->isEmpty()) {
+            $status = -1;
+            $message = "No Data";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $data,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -28,46 +44,102 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        $supplier = Supplier::create($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|string|email',
+            'phone' => 'required',
+            'accountNumber' => 'required'
+        ]);
 
-        return response()->json($supplier);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -1,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+        $supplier = Supplier::create($request->all());
+        
+        return response()->json([
+            'status' => 1,
+            'data' => $supplier,
+            'message' => "Create Supplier Successful!",
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Supplier  $supplier
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
+        $status = 1;
         $supplier = Supplier::find($id);
-        return $supplier;
+        if ($supplier == null) {
+            $status = -1;
+            $message = "Cannot find this supplier!";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $supplier,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Supplier  $supplier
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
+        $status = 1;
         $supplier = Supplier::find($id);
-        return $supplier->update($request->all());
+        if ($supplier == null) {
+            $status = -1;
+            $message = "Cannot find this supplier!";
+        }
+        else {
+            $supplier->update($request->all());
+            $message = "Update Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Supplier  $supplier
+     * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        $status = 1;
         $supplier = Supplier::find($id);
-        $supplier->delete();
-        return response()->json($supplier);
+        if ($supplier == null) {
+            $status = -1;
+            $message = "Cannot find this supplier!";
+        }
+        else {
+            $supplier->delete();
+            $message = "Delete Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 }

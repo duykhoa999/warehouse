@@ -131,7 +131,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         if ($customer == null) {
             $status = -1;
-            $message = "Cannot find this user!";
+            $message = "Cannot find this customer!";
         }
         else {
             $customer->delete();
