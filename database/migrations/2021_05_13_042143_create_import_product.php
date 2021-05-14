@@ -18,7 +18,6 @@ class CreateImportProduct extends Migration
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->unsignedBigInteger('import_id')->unsigned();
             $table->integer('amount');
-            $table->float('price');
         });
 
     }

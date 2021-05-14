@@ -17,7 +17,6 @@ class CreateExportProduct extends Migration
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->unsignedBigInteger('export_id')->unsigned();
             $table->integer('amount');
-            $table->float('price');
         });
     }
 
