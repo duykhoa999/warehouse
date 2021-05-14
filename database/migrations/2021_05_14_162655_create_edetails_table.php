@@ -14,6 +14,7 @@ class CreateEdetailsTable extends Migration
     public function up()
     {
         Schema::create('edetails', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->unsignedBigInteger('export_id')->unsigned();
             $table->integer('amount');
