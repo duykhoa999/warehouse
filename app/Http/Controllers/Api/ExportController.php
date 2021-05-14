@@ -33,6 +33,7 @@ class ExportController extends Controller
     public function store(Request $request)
     {
         $export = Export::create($request->all());
+        dd($export);
         
         return response()->json([
             'status' => 1,
