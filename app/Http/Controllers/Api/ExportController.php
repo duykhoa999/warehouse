@@ -102,8 +102,21 @@ class ExportController extends Controller
      * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Export $export)
+    public function destroy($id)
     {
-        //
+        $status = 1;
+        $export = Export::find($id);
+        if ($export == null) {
+            $status = -1;
+            $message = "Cannot find this export!";
+        }
+        else {
+            $export->delete();
+            $message = "Delete Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 }
