@@ -18,4 +18,8 @@ class Customer extends Model
         'phone',
         'accountNumber',
     ];
+
+    public function exports() {
+        return $this->hasMany('App\Export', 'export_id', 'id');
+    }
 }

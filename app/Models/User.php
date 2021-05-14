@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function imports() {
+        return $this->hasMany('App\Import', 'user_id', 'id');
+    }
+
+    public function exports() {
+        return $this->hasMany('App\Export', 'user_id', 'id');
+    }
 }

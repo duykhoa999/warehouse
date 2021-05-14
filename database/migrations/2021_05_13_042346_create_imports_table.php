@@ -16,6 +16,7 @@ class CreateImportsTable extends Migration
         Schema::create('imports', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->boolean('success');
             $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

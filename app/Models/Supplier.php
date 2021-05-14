@@ -16,4 +16,8 @@ class Supplier extends Model
         'phone',
         'accountNumber',
     ];
+
+    public function imports() {
+        return $this->hasMany('App\Import', 'supplier_id', 'id');
+    }
 }

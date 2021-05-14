@@ -17,4 +17,12 @@ class Product extends Model
         'photo',
         'price'
     ];
+
+    public function imports() {
+        return $this->belongsToMany('App\Import', 'import_product', 'product_id', 'import_id');
+    }
+
+    public function exports() {
+        return $this->belongsToMany('App\Export', 'export_product', 'product_id', 'export_id');
+    }
 }

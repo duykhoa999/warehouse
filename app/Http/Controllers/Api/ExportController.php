@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Import;
+use App\Models\Export;
 use Illuminate\Http\Request;
 
-class ImportController extends Controller
+class ExportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ImportController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -26,16 +26,22 @@ class ImportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Export::create($request->all());
+        
+        return response()->json([
+            'status' => 1,
+            'data' => $product,
+            'message' => "Create Product Successful!",
+        ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Import  $import
+     * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function show(Import $import)
+    public function show(Export $export)
     {
         //
     }
@@ -44,10 +50,10 @@ class ImportController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Import  $import
+     * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Import $import)
+    public function update(Request $request, Export $export)
     {
         //
     }
@@ -55,10 +61,10 @@ class ImportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Import  $import
+     * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Import $import)
+    public function destroy(Export $export)
     {
         //
     }

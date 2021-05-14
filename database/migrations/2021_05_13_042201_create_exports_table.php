@@ -16,6 +16,7 @@ class CreateExportsTable extends Migration
         Schema::create('exports', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->boolean('success');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
