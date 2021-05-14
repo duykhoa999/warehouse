@@ -48,10 +48,11 @@ class ExportController extends Controller
         $export->products()->attach($request->input('product_id'), [
             'amount' => $request->input('amount'),
         ]);
+        dd($export);
         return response()->json([
             'status' => 1,
             'data' => $export,
-            'message' => "Create Product Successful!",
+            'message' => "Create Export Successful!",
         ]);
     }
 
@@ -61,9 +62,26 @@ class ExportController extends Controller
      * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function show(Export $export)
+    public function show($id)
     {
-        //
+        $status = 1;
+        $export = Export::find($id);
+        if ($export == null) {
+            $status = -1;
+            $message = "Cannot find this export!";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $export,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
