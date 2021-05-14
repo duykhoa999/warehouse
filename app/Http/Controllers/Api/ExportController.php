@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Export;
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ExportController extends Controller
 {
@@ -15,13 +16,24 @@ class ExportController extends Controller
      */
     public function index()
     {
+        $status = 1;
         $data = Export::all();
-        $message = "Successful!";
+        if ($data->isEmpty()) {
+            $status = -1;
+            $message = "No Data";
+        }
+        else {
+            $message = "Successful!";
             return response()->json([
-                'status' => 1,
+                'status' => $status,
                 'message' => $message,
                 'data' => $data,
             ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
