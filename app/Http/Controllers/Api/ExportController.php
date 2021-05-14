@@ -26,11 +26,11 @@ class ExportController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Export::create($request->all());
+        $export = Export::create($request->all());
         
         return response()->json([
             'status' => 1,
-            'data' => $product,
+            'data' => $export,
             'message' => "Create Product Successful!",
         ]);
     }
