@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Export extends Model
 {
@@ -19,7 +20,7 @@ class Export extends Model
     ];
 
     public function users() {
-        return $this->belongsTo('App\User', 'user_id' , 'id');
+        return $this->belongsTo(User::class, 'user_id' , 'id');
     }
 
     public function customers() {
