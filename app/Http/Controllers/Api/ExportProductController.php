@@ -43,6 +43,7 @@ class ExportProductController extends Controller
      */
     public function store(Request $request)
     {
+        dd("abc");
         $exportProduct = ExportProduct::create($request->all());
 
         return response()->json([
