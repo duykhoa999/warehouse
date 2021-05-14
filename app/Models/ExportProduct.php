@@ -9,7 +9,7 @@ class ExportProduct extends Model
 {
     use HasFactory;
 
-    protected $table = 'importProducts';
+    protected $table = 'exportProducts';
 
     protected $fillable = [
         'product_id',
