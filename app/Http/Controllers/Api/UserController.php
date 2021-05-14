@@ -18,7 +18,7 @@ class UserController extends Controller
  
         if ($validator->fails()) {
             return response()->json([
-                'status' => -1,
+                'status' => -2,
                 'errors' => $validator->errors()->toArray(),
             ]);
         }
@@ -26,7 +26,7 @@ class UserController extends Controller
         $user = User::where(['email' => $request->get('email'), 'password' => $request->get('password')])->first();
         if($user == null) {
             return response()->json([
-                'status' => -2, 
+                'status' => -1, 
                 'message' => 'Login Fail'
             ]);
         }
@@ -80,7 +80,7 @@ class UserController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => -1,
+                'status' => -2,
                 'errors' => $validator->errors()->toArray(),
             ]);
         }

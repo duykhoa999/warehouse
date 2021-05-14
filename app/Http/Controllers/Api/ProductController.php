@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -43,9 +44,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request->all());
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'unit' => 'required|string',
+            'amount' => 'required|numeric|min:0',
+            'photo' => 'image|max:2048',
+        ]);
 
-        return response()->json($product);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -2,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
+        $product = Product::create($request->all());
+        
+        return response()->json([
+            'status' => 1,
+            'data' => $product,
+            'message' => "Create Product Successful!",
+        ]);
     }
 
     /**
@@ -56,9 +74,24 @@ class ProductController extends Controller
      */
     public function show($id)
     {
+        $status = 1;
         $product = Product::find($id);
-
-        return $product;
+        if ($product == null) {
+            $status = -1;
+            $message = "Cannot find this product!";
+        }
+        else {
+            $message = "Successful!";
+            return response()->json([
+                'status' => $status,
+                'message' => $message,
+                'data' => $product,
+            ]);
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -70,10 +103,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $product = Product::find($id);  
-        $product->update($request->all());
-
-        return response()->json($product);
+        $status = 1;
+        $product = Product::find($id);
+        if ($product == null) {
+            $status = -1;
+            $message = "Cannot find this product!";
+        }
+        else {
+            $product->update($request->all());
+            $message = "Update Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**
@@ -84,8 +127,19 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+        $status = 1;
         $product = Product::find($id);
-        $product->delete();
-        return response()->json($product);
+        if ($product == null) {
+            $status = -1;
+            $message = "Cannot find this user!";
+        }
+        else {
+            $product->delete();
+            $message = "Delete Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 }

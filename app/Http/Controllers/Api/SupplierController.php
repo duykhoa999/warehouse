@@ -53,7 +53,7 @@ class SupplierController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => -1,
+                'status' => -2,
                 'errors' => $validator->errors()->toArray(),
             ]);
         }
