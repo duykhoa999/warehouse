@@ -32,6 +32,7 @@ class ExportController extends Controller
      */
     public function store(Request $request)
     {
+        dd("abx");
         $export = Export::create($request->all());
         dd($export);
         
