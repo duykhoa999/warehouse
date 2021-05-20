@@ -8,7 +8,6 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ExportController;
 use App\Http\Controllers\Api\ImportController;
-use App\Http\Controllers\Api\EdetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,10 +67,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/imports', [ImportController::class, 'store'])->name('import.store');   
     Route::get('/imports/{import}', [ImportController::class, 'show'])->name('import.show');
     Route::delete('/imports/{import}', [ImportController::class, 'destroy'])->name('import.delete');
-
-//ExportProduct
-    Route::get('/edetails', [EdetailController::class, 'index'])->name('edetail.index');
-    Route::post('/edetails', [EdetailController::class, 'store'])->name('edetail.store');   
 
 // Route::group(['prefix' => 'api', 'as' => 'api.'], function() {
 //     //      
