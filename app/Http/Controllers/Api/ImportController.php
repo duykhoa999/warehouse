@@ -7,7 +7,7 @@ use App\Models\Import;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class ExportController extends Controller
+class ImportController extends Controller
 {
     /**
      * Display a listing of the resource.
