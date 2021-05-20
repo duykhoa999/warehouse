@@ -21,11 +21,11 @@ class Import extends Model
         'success'
     ];
 
-    public function users() {
-        return $this->belongsTo(User::class, 'user_id' , 'id');
-    }
+    // public function users() {
+    //     return $this->belongsTo(User::class, 'user_id' , 'id');
+    // }
 
-    public function suppliers() {
-        return $this->belongsTo(Supplier::class, 'supplier_id' , 'id');
-    }
+    // public function suppliers() {
+    //     return $this->belongsTo(Supplier::class, 'supplier_id' , 'id');
+    // }
 }
