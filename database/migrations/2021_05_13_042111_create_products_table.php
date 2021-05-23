@@ -21,7 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('unit');
             $table->integer('amount');
             $table->string('photo');
-            $table->float('price');
+            $table->float('priceIm');
+            $table->float('priceEx');
             $table->timestamps();
         });
     }

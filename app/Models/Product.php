@@ -17,7 +17,8 @@ class Product extends Model
         'unit',
         'amount',
         'photo',
-        'price'
+        'priceIm',
+        'priceEx',
     ];
 
     public function imports() {
