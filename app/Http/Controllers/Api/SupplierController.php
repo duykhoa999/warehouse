@@ -17,7 +17,7 @@ class SupplierController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Supplier::all();
+        $data = Supplier::paginate(10);
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";
