@@ -47,7 +47,8 @@ class ProductController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'unit' => 'required|string',
-            'price' => 'required|numeric',
+            'priceIm' => 'required|numeric',
+            'priceEx' => 'required|numeric',
             'amount' => 'required|numeric|min:0',
         ]);
 
