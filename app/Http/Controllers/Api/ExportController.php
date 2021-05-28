@@ -17,7 +17,7 @@ class ExportController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Export::paginate(10);
+        $data = Export::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";

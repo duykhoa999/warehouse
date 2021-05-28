@@ -17,7 +17,7 @@ class CustomerController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Customer::paginate(10);
+        $data = Customer::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";

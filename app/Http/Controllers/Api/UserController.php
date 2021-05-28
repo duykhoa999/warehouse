@@ -45,7 +45,7 @@ class UserController extends Controller
     public function index()
     {
         $status = 1;
-        $data = User::paginate(10);
+        $data = User::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";

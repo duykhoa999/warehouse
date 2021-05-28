@@ -17,7 +17,7 @@ class ImportController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Import::paginate(10);
+        $data = Import::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";

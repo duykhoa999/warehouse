@@ -17,7 +17,7 @@ class ProductController extends Controller
     public function index()
     {
         $status = 1;
-        $data = Product::paginate(10);
+        $data = Product::all();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";
