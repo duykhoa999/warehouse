@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ExportController;
 use App\Http\Controllers\Api\ImportController;
+use App\Http\Controllers\Api\EdetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,38 +30,50 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::post('/login', [UserController::class, 'login']);
 
 //User
-    Route::get('/users', [UserController::class, 'index'])->name('user.index');
-    Route::post('/users', [UserController::class, 'store'])->name('user.store');
-    Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
-    Route::put('/users/{user}', [UserController::class, 'update'])->name('user.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('/users', [UserController::class, 'index']);
+    Route::post('/users', [UserController::class, 'store']);
+    Route::get('/users/{user}', [UserController::class, 'show']);
+    Route::put('/users/{user}', [UserController::class, 'update']);
+    Route::delete('/users/{user}', [UserController::class, 'destroy']);
 
 //Product
-    Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-    Route::post('/products', [ProductController::class, 'store'])->name('product.store');
-    Route::get('/products/{product}', [ProductController::class, 'show'])->name('product.show');
-    Route::put('/products/{product}', [ProductController::class, 'update'])->name('product.update');
-    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('product.delete');
+    Route::get('/products', [ProductController::class, 'index']);
+    Route::post('/products', [ProductController::class, 'store']);
+    Route::get('/products/{product}', [ProductController::class, 'show']);
+    Route::put('/products/{product}', [ProductController::class, 'update']);
+    Route::delete('/products/{product}', [ProductController::class, 'destroy']);
 
 //Customer
-    Route::get('/customers', [CustomerController::class, 'index'])->name('customer.index');
-    Route::post('/customers', [CustomerController::class, 'store'])->name('customer.store');
-    Route::get('/customers/{customer}', [CustomerController::class, 'show'])->name('customer.show');
-    Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('customer.update');
-    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('customer.delete');
+    Route::get('/customers', [CustomerController::class, 'index']);
+    Route::post('/customers', [CustomerController::class, 'store']);
+    Route::get('/customers/{customer}', [CustomerController::class, 'show']);
+    Route::put('/customers/{customer}', [CustomerController::class, 'update']);
+    Route::delete('/customers/{customer}', [CustomerController::class, 'destroy']);
 
 //Supplier
-    Route::get('/suppliers', [SupplierController::class, 'index'])->name('supplier.index');
-    Route::post('/suppliers', [SupplierController::class, 'store'])->name('supplier.store');
-    Route::get('/suppliers/{supplier}', [SupplierController::class, 'show'])->name('supplier.show');
-    Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('supplier.update');
-    Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('supplier.delete');
+    Route::get('/suppliers', [SupplierController::class, 'index']);
+    Route::post('/suppliers', [SupplierController::class, 'store']);
+    Route::get('/suppliers/{supplier}', [SupplierController::class, 'show']);
+    Route::put('/suppliers/{supplier}', [SupplierController::class, 'update']);
+    Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy']);
 
 //Export
-    Route::get('/exports', [ExportController::class, 'index'])->name('export.index');
-    Route::post('/exports', [ExportController::class, 'store'])->name('export.store');   
-    Route::get('/exports/{export}', [ExportController::class, 'show'])->name('export.show');
-    Route::delete('/exports/{export}', [ExportController::class, 'destroy'])->name('export.delete');
+    Route::get('/exports', [ExportController::class, 'index']);
+    Route::post('/exports', [ExportController::class, 'store']);   
+    Route::get('/exports/{export}', [ExportController::class, 'show']);
+    Route::delete('/exports/{export}', [ExportController::class, 'destroy']);
+
+//Import
+    Route::get('/imports', [ImportController::class, 'index']);
+    Route::post('/imports', [ImportController::class, 'store']);   
+    Route::get('/imports/{import}', [ImportController::class, 'show']);
+    Route::delete('/imports/{import}', [ImportController::class, 'destroy']);
+
+//Export
+    Route::get('/export-detail', [EdetailController::class, 'index']);
+    Route::post('/export-detail', [EdetailController::class, 'store']);  
+    Route::get('/export-detail/{export-detail}', [EdetailController::class, 'show']);
+    Route::delete('/export-detail/{export-detail}', [EdetailController::class, 'destroy']);
 
 //Import
     Route::get('/imports', [ImportController::class, 'index'])->name('import.index');
