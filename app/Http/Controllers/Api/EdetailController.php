@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Edetail;
 use Illuminate\Http\Request;
 
-class ExportProductController extends Controller
+class EdetailController extends Controller
 {
     /**
      * Display a listing of the resource.

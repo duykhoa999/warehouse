@@ -21,6 +21,10 @@ class Import extends Model
         'success'
     ];
 
+    public function products() {
+        return $this->belongsToMany(Product::class, 'import_product', 'import_id', 'product_id');
+    }
+
     // public function users() {
     //     return $this->belongsTo(User::class, 'user_id' , 'id');
     // }
