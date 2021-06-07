@@ -43,11 +43,7 @@ class EdetailController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Edetail::create([
-            'product_id' => 1,
-            'export_id' => 1,
-            'amount' => 100,
-        ]));
+        dd(Edetail::all());
         // $edetail = Edetail::create($request->all());
 
         // return response()->json([
