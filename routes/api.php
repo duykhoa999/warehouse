@@ -73,6 +73,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/export-detail', [EdetailController::class, 'index']);
     Route::post('/export-detail', [EdetailController::class, 'store']);  
     Route::get('/export-detail/{export}', [EdetailController::class, 'show']);
+    Route::put('/export-detail/{export}', [EdetailController::class, 'update']);
     Route::delete('/export-detail/{export}', [EdetailController::class, 'destroy']);
 
 //Import
