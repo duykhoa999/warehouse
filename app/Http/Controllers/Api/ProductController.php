@@ -132,7 +132,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         if ($product == null) {
             $status = -1;
-            $message = "Cannot find this user!";
+            $message = "Cannot find this product!";
         }
         else {
             $product->delete();
