@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\ExportController;
 use App\Http\Controllers\Api\ImportController;
 use App\Http\Controllers\Api\EdetailController;
+use App\Http\Controllers\Api\IdetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,16 +70,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/imports/{import}', [ImportController::class, 'show']);
     Route::delete('/imports/{import}', [ImportController::class, 'destroy']);
 
-//Export
+//Export Detail
     Route::get('/export-detail', [EdetailController::class, 'index']);
     Route::post('/export-detail', [EdetailController::class, 'store']);  
     Route::get('/export-detail/{export}', [EdetailController::class, 'show']);
     Route::put('/export-detail/{export}', [EdetailController::class, 'update']);
     Route::delete('/export-detail/{export}', [EdetailController::class, 'destroy']);
 
-//Import
-    Route::get('/imports', [ImportController::class, 'index'])->name('import.index');
-    Route::post('/imports', [ImportController::class, 'store'])->name('import.store');   
-    Route::get('/imports/{import}', [ImportController::class, 'show'])->name('import.show');
-    Route::delete('/imports/{import}', [ImportController::class, 'destroy'])->name('import.delete');
+//Import Detail
+    Route::get('/import-detail', [IdetailController::class, 'index']);
+    Route::post('/import-detail', [IdetailController::class, 'store']);   
+    Route::get('/import-detail/{import}', [IdetailController::class, 'show']);
+    Route::put('/import-detail/{import}', [IdetailController::class, 'update']);
+    Route::delete('/import-detail/{import}', [IdetailController::class, 'destroy']);
 
