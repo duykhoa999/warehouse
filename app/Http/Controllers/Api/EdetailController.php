@@ -43,23 +43,23 @@ class EdetailController extends Controller
      */
     public function store(Request $request)
     {
-        dd("aaaa");
+        dd(Edetail::create($request->all()));
         // $edetail = Edetail::create($request->all());
 
         // return response()->json([
         //     'status' => 1,
         //     'data' => $edetail,
-        //     'message' => "Create Export Detail Successful!",
+        //     'message' => "Create Import Successful!",
         // ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ExportProduct  $exportProduct
+     * @param  \App\Models\Edetail  $edetail
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Edetail $edetail)
     {
         //
     }
@@ -68,10 +68,10 @@ class EdetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ExportProduct  $exportProduct
+     * @param  \App\Models\Edetail  $edetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Edetail $edetail)
     {
         //
     }
@@ -79,10 +79,10 @@ class EdetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ExportProduct  $exportProduct
+     * @param  \App\Models\Edetail  $edetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Edetail $edetail)
     {
         //
     }
