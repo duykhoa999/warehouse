@@ -43,7 +43,7 @@ class EdetailController extends Controller
      */
     public function store(Request $request)
     {
-        dd(Edetail::create($request->all()));
+        dd(Edetail::create());
         // $edetail = Edetail::create($request->all());
 
         // return response()->json([
