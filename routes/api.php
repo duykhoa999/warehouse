@@ -72,8 +72,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Export
     Route::get('/export-detail', [EdetailController::class, 'index']);
     Route::post('/export-detail', [EdetailController::class, 'store']);  
-    Route::get('/export-detail/{export-detail}', [EdetailController::class, 'show']);
-    Route::delete('/export-detail/{export-detail}', [EdetailController::class, 'destroy']);
+    Route::get('/export-detail/{export}', [EdetailController::class, 'show']);
+    Route::delete('/export-detail/{export}', [EdetailController::class, 'destroy']);
 
 //Import
     Route::get('/imports', [ImportController::class, 'index'])->name('import.index');
