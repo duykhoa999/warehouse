@@ -18,6 +18,7 @@ class CreateIdetailsTable extends Migration
             $table->unsignedBigInteger('product_id')->unsigned();
             $table->unsignedBigInteger('import_id')->unsigned();
             $table->integer('amount');
+            $table->timestamps();
 
             $table->foreign('product_id')->references('id')
                 ->on('products')
