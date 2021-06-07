@@ -19,15 +19,6 @@ class CreateEdetailsTable extends Migration
             $table->unsignedBigInteger('export_id')->unsigned();
             $table->integer('amount');
 
-            $table->foreign('product_id')->references('id')
-                ->on('products')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
-
-            $table->foreign('export_id')->references('id')
-                ->on('exports')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
         });
     }
 
