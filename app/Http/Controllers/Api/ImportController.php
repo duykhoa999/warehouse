@@ -84,7 +84,6 @@ class ImportController extends Controller
             return response()->json([
                 'status' => $status,
                 'message' => $message,
-                'data' => $import,
             ]);
         }
         return response()->json([

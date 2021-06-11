@@ -84,7 +84,6 @@ class ExportController extends Controller
             return response()->json([
                 'status' => $status,
                 'message' => $message,
-                'data' => $export,
             ]);
         }
         return response()->json([
