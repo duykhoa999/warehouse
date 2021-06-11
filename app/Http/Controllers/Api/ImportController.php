@@ -60,7 +60,7 @@ class ImportController extends Controller
 
         return response()->json([
             'status' => 1,
-            'data' => $import,
+            'data' => ['id' => $import->id],
             'message' => "Create Import Successful!",
         ]);
     }
