@@ -60,7 +60,6 @@ class ExportController extends Controller
 
         return response()->json([
             'status' => 1,
-            'data' => $export,
             'message' => "Create Export Successful!",
         ]);
     }
