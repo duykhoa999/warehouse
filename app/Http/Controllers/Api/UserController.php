@@ -23,7 +23,7 @@ class UserController extends Controller
             ]);
         }
 
-        $user = User::where(['email' => $request->get('email'), 'password' => $request->get('password')])->first();
+        $user = User::where(['id' => $request->get('id'), 'password' => $request->get('password')])->first();
         if($user == null) {
             return response()->json([
                 'status' => -1, 
