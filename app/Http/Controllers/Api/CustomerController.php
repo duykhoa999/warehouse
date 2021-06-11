@@ -44,19 +44,19 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'name' => 'required',
-        //     'email' => 'required|string|email',
-        //     'phone' => 'required',
-        //     'accountNumber' => 'required'
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|string|email',
+            'phone' => 'required',
+            'accountNumber' => 'required'
+        ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json([
-        //         'status' => -2,
-        //         'errors' => $validator->errors()->toArray(),
-        //     ]);
-        // }
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => -2,
+                'errors' => $validator->errors()->toArray(),
+            ]);
+        }
         $customer = Customer::create($request->all());
         
         return response()->json([

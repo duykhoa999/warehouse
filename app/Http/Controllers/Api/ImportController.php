@@ -84,6 +84,7 @@ class ImportController extends Controller
             return response()->json([
                 'status' => $status,
                 'message' => $message,
+                'data' => $import,
             ]);
         }
         return response()->json([
@@ -101,7 +102,20 @@ class ImportController extends Controller
      */
     public function update(Request $request,$id)
     {
-        //
+        $status = 1;
+        $import = Import::find($id);
+        if ($import == null) {
+            $status = -1;
+            $message = "Cannot find this import!";
+        }
+        else {
+            $import->update($request->all());
+            $message = "Update Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**

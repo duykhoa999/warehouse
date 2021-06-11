@@ -84,6 +84,7 @@ class ExportController extends Controller
             return response()->json([
                 'status' => $status,
                 'message' => $message,
+                'data' => $export,
             ]);
         }
         return response()->json([
@@ -99,9 +100,22 @@ class ExportController extends Controller
      * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Export $export)
+    public function update(Request $request, $id)
     {
-        //
+        $status = 1;
+        $export = Export::find($id);
+        if ($export == null) {
+            $status = -1;
+            $message = "Cannot find this export!";
+        }
+        else {
+            $export->update($request->all());
+            $message = "Update Successful!";
+        }
+        return response()->json([
+            'status' => $status,
+            'message' => $message,
+        ]);
     }
 
     /**

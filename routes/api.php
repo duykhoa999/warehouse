@@ -60,13 +60,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //Export
     Route::get('/exports', [ExportController::class, 'index']);
-    Route::post('/exports', [ExportController::class, 'store']);   
+    Route::post('/exports', [ExportController::class, 'store']);
+    Route::put('/exports/{export}', [ExportController::class, 'update']);     
     Route::get('/exports/{export}', [ExportController::class, 'show']);
     Route::delete('/exports/{export}', [ExportController::class, 'destroy']);
 
 //Import
     Route::get('/imports', [ImportController::class, 'index']);
-    Route::post('/imports', [ImportController::class, 'store']);   
+    Route::post('/imports', [ImportController::class, 'store']);
+    Route::put('/imports/{import}', [ImportController::class, 'update']);   
     Route::get('/imports/{import}', [ImportController::class, 'show']);
     Route::delete('/imports/{import}', [ImportController::class, 'destroy']);
 
