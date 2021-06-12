@@ -10,6 +10,8 @@ use App\Models\Customer;
 use App\Models\Import;
 use App\Models\Export;
 use App\Models\Product;
+use App\Models\Edetail;
+use App\Models\Idetail;
 use Illuminate\Support\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -145,6 +147,40 @@ class DatabaseSeeder extends Seeder
             'customer_id' => 1,
             'user_id' => 3,
             'success' => true,
+        ]);
+
+        //Import Detail
+        Idetail::create([
+            'product_id' => 1,
+            'import_id' => 1,
+            'amount' => 10,
+        ]);
+        Idetail::create([
+            'product_id' => 2,
+            'import_id' => 2,
+            'amount' => 10,
+        ]);
+        Idetail::create([
+            'product_id' => 3,
+            'import_id' => 3,
+            'amount' => 10,
+        ]);
+
+        //Export Detail
+        Edetail::create([
+            'product_id' => 1,
+            'import_id' => 1,
+            'amount' => 10,
+        ]);
+        Edetail::create([
+            'product_id' => 2,
+            'import_id' => 2,
+            'amount' => 10,
+        ]);
+        Edetail::create([
+            'product_id' => 3,
+            'import_id' => 3,
+            'amount' => 10,
         ]);
     }
 }
