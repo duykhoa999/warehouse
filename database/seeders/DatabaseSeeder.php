@@ -87,24 +87,24 @@ class DatabaseSeeder extends Seeder
             'unit' => 'Thùng',
             'amount' => 100,
             'photo' => 'https://cdn.tgdd.vn/Products/Images/2563/76509/bhx/nuoc-tinh-khiet-aquafina-5-lit-201910140954185442.jpg?fbclid=IwAR3aLdNQ36rcWLPO16rwb8u2_QuDGKMZX_tly9nya7H9CibY1aM7BfQWO-k',
-            'priceIm' => 400000,
-            'priceEx' => 450000,
+            'priceIm' => 40000,
+            'priceEx' => 45000,
         ]);
         Product::create([
             'name' => 'Nước Aquafina 1,5l',
             'unit' => 'Thùng',
             'amount' => 150,
             'photo' => 'https://salt.tikicdn.com/cache/w1200/ts/product/bd/7f/f3/a9594a99a5c8dc5d661adeff11f64350.JPG?fbclid=IwAR0RhLMTDiQZrXO3Qg7HbGLbS76uWUk9wAeYYutpxcDy0et6cOxMr_gK-Qk',
-            'priceIm' => 300000,
-            'priceEx' => 350000,
+            'priceIm' => 30000,
+            'priceEx' => 35000,
         ]);
         Product::create([
             'name' => 'Nước Aquafina 500ml',
             'unit' => 'Thùng',
             'amount' => 180,
             'photo' => 'https://i.pinimg.com/236x/b4/2e/8b/b42e8b9124a5f8cd8e21e8356ba0d367.jpg?fbclid=IwAR1NozvFva0K9FRXgVEvxZMw3qDSupEEiKJi37jWoaCBg0k02pBZ0199Ks4',
-            'priceIm' => 200000,
-            'priceEx' => 250000,
+            'priceIm' => 20000,
+            'priceEx' => 25000,
         ]);
 
         //Import
