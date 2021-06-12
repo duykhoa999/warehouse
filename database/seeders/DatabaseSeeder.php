@@ -169,17 +169,17 @@ class DatabaseSeeder extends Seeder
         //Export Detail
         Edetail::create([
             'product_id' => 1,
-            'import_id' => 1,
+            'export_id' => 1,
             'amount' => 10,
         ]);
         Edetail::create([
             'product_id' => 2,
-            'import_id' => 2,
+            'export_id' => 2,
             'amount' => 10,
         ]);
         Edetail::create([
             'product_id' => 3,
-            'import_id' => 3,
+            'export_id' => 3,
             'amount' => 10,
         ]);
     }
