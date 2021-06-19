@@ -26,24 +26,24 @@ class DatabaseSeeder extends Seeder
         //User
         User::create([
             'name' => 'Duy Khoa',
-            'email' => 'duykhoa@gmail.com',
+            'email' => 'a@gmail.com',
             'password' => '123456789',
         ]);
         User::create([
             'name' => 'Mạnh Lộc',
-            'email' => 'manhloc@gmail.com',
+            'email' => 'b@gmail.com',
             'password' => '123456789',
         ]);
         User::create([
             'name' => 'Công Minh',
-            'email' => 'congminh@gmail.com',
+            'email' => 'c@gmail.com',
             'password' => '123456789',
         ]);
 
         //Supplier
         Supplier::create([
             'name' => 'Văn Lưu',
-            'email' => 'vanluu@gmail.com',
+            'email' => 'd@gmail.com',
             'phone' => '0123276398',
             'accountNumber' => '55558888777',
         ]);
