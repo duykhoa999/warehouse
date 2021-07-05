@@ -45,7 +45,8 @@ class UserController extends Controller
     public function index()
     {
         $status = 1;
-        $data = User::all();
+        // $data = User::all();
+        $data = User::withTrashed()->get();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";
