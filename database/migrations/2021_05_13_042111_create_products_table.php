@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->float('priceIm');
             $table->float('priceEx');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

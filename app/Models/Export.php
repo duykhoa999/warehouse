@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Export extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'exports';
 

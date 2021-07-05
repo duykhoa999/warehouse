@@ -20,6 +20,7 @@ class CreateSuppliersTable extends Migration
             $table->string('phone');
             $table->string('accountNumber');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
