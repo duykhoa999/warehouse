@@ -17,8 +17,8 @@ class IdetailController extends Controller
     public function index()
     {
         $status = 1;
-        // $data = Idetail::all();
-        $data = Idetail::withTrashed()->get();
+        $data = Idetail::all();
+        // $data = Idetail::withTrashed()->get();
         if ($data->isEmpty()) {
             $status = -1;
             $message = "No Data";

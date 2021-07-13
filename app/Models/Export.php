@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Edetail;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 
 class Export extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CascadeSoftDeletes;
 
     protected $table = 'exports';
 
@@ -22,11 +24,11 @@ class Export extends Model
         'success'
     ];
 
-    public function users() {
-        return $this->belongsTo(User::class, 'user_id' , 'id');
-    }
+    protected $cascadeDeletes = ['edetails'];
 
-    public function customers() {
-        return $this->belongsTo(Customer::class, 'customer_id' , 'id');
+    protected $dates = ['deleted_at'];
+
+    public function edetails() {
+        return $this->hasMany(Edetail::class);
     }
 }
