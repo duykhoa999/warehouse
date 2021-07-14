@@ -42,19 +42,19 @@ class DatabaseSeeder extends Seeder
 
         //Supplier
         Supplier::create([
-            'name' => 'Văn Lưu',
+            'name' => 'Công ty Nước khoáng Lavie',
             'email' => 'd@gmail.com',
             'phone' => '0123276398',
             'accountNumber' => '55558888777',
         ]);
         Supplier::create([
-            'name' => 'Công Lộc',
+            'name' => 'Công ty Mì Hảo Hảo',
             'email' => 'congloc@gmail.com',
             'phone' => '0123257893',
             'accountNumber' => '66669999444',
         ]);
         Supplier::create([
-            'name' => 'Mạnh Lưu',
+            'name' => 'Công ty Aquafina',
             'email' => 'manhluu@gmail.com',
             'phone' => '0123274231',
             'accountNumber' => '444555777888',
