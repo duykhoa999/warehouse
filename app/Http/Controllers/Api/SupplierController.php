@@ -133,6 +133,10 @@ class SupplierController extends Controller
             $status = -1;
             $message = "Cannot find this supplier!";
         }
+        else if (count($supplier->imports) > 0) {
+            $status = -3;
+            $message = "Delete Failed!";
+        }
         else {
             $supplier->delete();
             $message = "Delete Successful!";

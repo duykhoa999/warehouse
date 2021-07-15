@@ -132,6 +132,10 @@ class ImportController extends Controller
             $status = -1;
             $message = "Cannot find this import!";
         }
+        else if (count($import->idetails) > 0) {
+            $status = -3;
+            $message = "Delete Failed!";
+        }
         else {
             $import->delete();
             $message = "Delete Successful!";

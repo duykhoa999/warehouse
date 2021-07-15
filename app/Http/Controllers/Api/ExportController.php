@@ -132,6 +132,10 @@ class ExportController extends Controller
             $status = -1;
             $message = "Cannot find this export!";
         }
+        else if (count($export->edetails) > 0) {
+            $status = -3;
+            $message = "Delete Failed!";
+        }
         else {
             $export->delete();
             $message = "Delete Successful!";

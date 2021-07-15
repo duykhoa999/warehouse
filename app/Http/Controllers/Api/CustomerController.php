@@ -133,6 +133,10 @@ class CustomerController extends Controller
             $status = -1;
             $message = "Cannot find this customer!";
         }
+        else if (count($customer->exports) > 0) {
+            $status = -3;
+            $message = "Delete Failed!";
+        }
         else {
             $customer->delete();
             $message = "Delete Successful!";
