@@ -134,10 +134,6 @@ class ProductController extends Controller
             $status = -1;
             $message = "Cannot find this product!";
         }
-        else if (count($product->idetails) > 0 || count($product->edetails) > 0) {
-            $status = -3;
-            $message = "Delete Failed!";
-        }
         else {
             $product->delete();
             $message = "Delete Successful!";
