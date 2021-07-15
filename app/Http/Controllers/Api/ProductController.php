@@ -131,7 +131,6 @@ class ProductController extends Controller
     {
         $status = 1;
         $product = Product::find($id);
-        dd($product);
         if ($product == null) {
             $status = -1;
             $message = "Cannot find this product!";
