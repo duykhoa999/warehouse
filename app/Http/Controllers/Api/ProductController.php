@@ -135,8 +135,7 @@ class ProductController extends Controller
             $status = -1;
             $message = "Cannot find this product!";
         }
-        else if (isset($product->idetails)) {
-            dd(count($product->idetails));
+        else if (count($product->idetails) <= 0) {
             $status = -3;
             $message = "Delete Failed!";
         }
