@@ -136,7 +136,7 @@ class ProductController extends Controller
             $message = "Cannot find this product!";
         }
         else if (isset($product->idetails)) {
-            var_dump($product->idetails);
+            dd($product->idetails['items']);
             $status = -3;
             $message = "Delete Failed!";
         }
