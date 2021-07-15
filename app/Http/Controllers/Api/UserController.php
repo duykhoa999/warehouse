@@ -162,6 +162,10 @@ class UserController extends Controller
             $status = -1;
             $message = "Cannot find this user!";
         }
+        else if (count($user->exports) > 0 && count($user->imports)) {
+            $status = -3;
+            $message = "Delete Failed!";
+        }
         else {
             $user->delete();
             $message = "Delete Successful!";

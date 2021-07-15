@@ -20,6 +20,6 @@ class Supplier extends Model
     ];
 
     public function imports() {
-        return $this->hasMany(Import::class, 'supplier_id', 'id');
+        return $this->hasMany(Import::class);
     }
 }

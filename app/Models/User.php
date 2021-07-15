@@ -46,10 +46,10 @@ class User extends Authenticatable
     ];
 
     public function imports() {
-        return $this->hasMany(Import::class, 'user_id', 'id');
+        return $this->hasMany(Import::class);
     }
 
     public function exports() {
-        return $this->hasMany(Export::class, 'user_id', 'id');
+        return $this->hasMany(Export::class);
     }
 }

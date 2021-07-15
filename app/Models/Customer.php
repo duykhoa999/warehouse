@@ -22,6 +22,6 @@ class Customer extends Model
     ];
 
     public function exports() {
-        return $this->hasMany(Export::class, 'export_id', 'id');
+        return $this->hasMany(Export::class);
     }
 }

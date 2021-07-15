@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Idetail;
 
 class ProductController extends Controller
 {
@@ -135,7 +134,7 @@ class ProductController extends Controller
             $status = -1;
             $message = "Cannot find this product!";
         }
-        else if (count($product->idetails) > 0) {
+        else if (count($product->idetails) > 0 && count($product->edetails)) {
             $status = -3;
             $message = "Delete Failed!";
         }
