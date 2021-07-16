@@ -50,7 +50,6 @@ class ProductController extends Controller
             'priceIm' => 'required|numeric',
             'priceEx' => 'required|numeric',
             'amount' => 'required|numeric|min:0',
-            'photo' => 'max:2048',
         ]);
 
         if ($validator->fails()) {
